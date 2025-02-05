@@ -1,0 +1,15 @@
+<h2>Selamat Datang, <span id="userName">Pengguna</span>!</h2>
+<button id="logout">Keluar</button>
+
+<script type="module">
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            document.getElementById("userName").textContent = user.displayName || "Pengguna";
+        } else {
+            window.location.href = "https://sites.google.com/view/sanivara/halaman-muka/halaman-login/halaman-rumah";
+        }
+    });
+</script>
